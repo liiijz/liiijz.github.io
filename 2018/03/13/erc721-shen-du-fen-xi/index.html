@@ -101,14 +101,14 @@
 <meta property="og:site_name" content="看区块">
 <meta property="og:description" content="理解不可替代的以太坊代币 李工翻译，转载请注明出处 https://medium.com/crypto-currently/the-anatomy-of-erc721-e9db77abfc24 很多人都已经听说过了以太坊区块链上的叫做加密猫的新游戏。这款游戏目前在虚拟货币社区产生了巨大影响，因为这款游戏有着极其独特的创意。加密猫是一款可以让玩家进行买，卖，交易，以及繁殖数字猫咪。他们被认为是“可以">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://cdn-images-1.medium.com/max/800/0*kp_ccS26KoORhJjK.png">
-<meta property="og:image" content="https://cdn-images-1.medium.com/max/800/0*dGUMTP3G41z_tcEx.jpg">
-<meta property="og:image" content="https://cdn-images-1.medium.com/max/800/0*D_FwqTj-7Z0mhPnm.jpg">
-<meta property="og:updated_time" content="2018-03-13T06:06:52.894Z">
+<meta property="og:image" content="http://kanqukuai.cn/2018/03/13/erc721-shen-du-fen-xi/0_kp_ccS26KoORhJjK.png">
+<meta property="og:image" content="http://kanqukuai.cn/2018/03/13/erc721-shen-du-fen-xi/0_dGUMTP3G41z_tcEx.jpg">
+<meta property="og:image" content="http://kanqukuai.cn/2018/03/13/erc721-shen-du-fen-xi/0_D_FwqTj-7Z0mhPnm.jpg">
+<meta property="og:updated_time" content="2018-03-23T08:50:22.861Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入分析ERC721">
 <meta name="twitter:description" content="理解不可替代的以太坊代币 李工翻译，转载请注明出处 https://medium.com/crypto-currently/the-anatomy-of-erc721-e9db77abfc24 很多人都已经听说过了以太坊区块链上的叫做加密猫的新游戏。这款游戏目前在虚拟货币社区产生了巨大影响，因为这款游戏有着极其独特的创意。加密猫是一款可以让玩家进行买，卖，交易，以及繁殖数字猫咪。他们被认为是“可以">
-<meta name="twitter:image" content="https://cdn-images-1.medium.com/max/800/0*kp_ccS26KoORhJjK.png">
+<meta name="twitter:image" content="http://kanqukuai.cn/2018/03/13/erc721-shen-du-fen-xi/0_kp_ccS26KoORhJjK.png">
 
 
 
@@ -362,16 +362,16 @@
 <p><strong>李工翻译，转载请注明出处</strong></p>
 <p><a href="https://medium.com/crypto-currently/the-anatomy-of-erc721-e9db77abfc24" target="_blank" rel="noopener">https://medium.com/crypto-currently/the-anatomy-of-erc721-e9db77abfc24</a></p>
 <p>很多人都已经听说过了以太坊区块链上的叫做加密猫的新游戏。这款游戏目前在虚拟货币社区产生了巨大影响，因为这款游戏有着极其独特的创意。加密猫是一款可以让玩家进行买，卖，交易，以及繁殖数字猫咪。他们被认为是“可以繁殖的豆豆娃（一种玩具）”，而且每只猫都是独一无二的。 这种独一无二的特性使得加密猫咪变得极其可以收藏的，会使人对一些猫的特征产生兴趣并且希望拥有它们。</p>
-<p><img src="https://cdn-images-1.medium.com/max/800/0*kp_ccS26KoORhJjK.png" alt="image"></p>
+<img src="/2018/03/13/erc721-shen-du-fen-xi/0_kp_ccS26KoORhJjK.png">
 <p>但是数字收藏品并不仅仅局限于数字猫咪。人类总是一直有收藏东西的历史；所以这不新鲜。从物理的钱币到精灵宝可梦的卡片，人们总是喜欢收集。这是一种嗜好，由于对稀缺事物有着极大的兴趣。类似于商品价值与其稀缺程度的关系。收藏品的价值对于收藏者来说是与收藏品在其它物品中的稀缺性相关联的。</p>
 <p>我们能够通过以太坊的代币来模拟稀有的可收藏的物品，同时每一种这样的代币都遵循着以太坊社区一种叫ERC721的新的标准。以太坊第721号征求意见稿，又叫ERC721，是一个以太坊改进提案由Dieter Shirley在2017年底提出的。这个提案使得智能合约代币能够像ERC20一样被交易。ERC721代币之间都是独一无二的，而且这些代币之间是不可替换的。</p>
 <p><a href="https://github.com/ethereum/EIPs/issues/721" target="_blank" rel="noopener">ERC: Non-fungible Token Standard #721</a></p>
 <p>可替换 - 是指某种东西（例如金钱或日用品）的其一部分或一定数量可以被另一种等量的物品所替代，以支付债务或账户结算。</p>
 <p>本质上可替换性是指资产的一个特征，在这里指代币，决定相同或相似类型或数量的物品在交换或使用过程中是否可以被完全互换。</p>
 <p>例如，下面的美国五美元钞票可用于从便利店购买汽水。</p>
-<p><img src="https://cdn-images-1.medium.com/max/800/0*dGUMTP3G41z_tcEx.jpg" alt="image"></p>
+<img src="/2018/03/13/erc721-shen-du-fen-xi/0_dGUMTP3G41z_tcEx.jpg">
 <p>五元美钞具有价值，可用于购买价值相同或较低的物品。 但是，当有人用下面的棒球卡来购买苏打水时，店主应该不会接受。</p>
-<p><img src="https://cdn-images-1.medium.com/max/800/0*D_FwqTj-7Z0mhPnm.jpg" alt="image"></p>
+<img src="/2018/03/13/erc721-shen-du-fen-xi/0_D_FwqTj-7Z0mhPnm.jpg">
 <p>为什么上面的卡洛斯桑塔纳卡不会被店主接受，当它的价值是5美元时，是否与五元美钞一样呢？ 这是因为棒球卡和美元钞票具有不同的特征，由不同的人来定义它们的价值。 一个7岁的孩子可能愿意为棒球卡支付7美元，因为他们喜欢卡上的颜色。但是，店主甚至不认为这张卡的价格为5美元，仅仅因为它并非像美元那样由美联储发行。 棒球卡和美元钞票具有的独特属性使得它们不具有可替代性，因为它们根据交易过程具有不同的价值，并且不总是能互换使用。</p>
 <p>就收藏品而言，如果收藏品具有不同的特征，这两件收藏品就是不可替代的。对于物理硬币，金币不能与铜币互换，因为它们的不同特征赋予了它们不同的价值对于收藏者来说。</p>
 <p>ERC721代币能够用于任何交易，但它们的价值是由它的独特性与稀缺性所决定的。该标准定义了一下方法：</p>
