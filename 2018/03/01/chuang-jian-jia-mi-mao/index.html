@@ -101,10 +101,12 @@
 <meta property="og:site_name" content="看区块">
 <meta property="og:description" content="原文链接  李工翻译，转载请注明出处 加密猫游戏很好的证明了区块链除了简单金融交易以外的用途 我希望我们在未来能看到更多跟加密猫一样的区块链技术在游戏领域的创新应用。所以我希望能写一个关于加密猫代码的快速攻略，用来展示这个游戏是怎么被实现的。 这篇文章是写给开发者的，但这不是一个介绍Solidity的新手教程，我尝试包含了参考文档的链接使文章尽可能适用于所有层次的开发者。 让我们来一探究竟… 加密">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-23T08:56:36.000Z">
+<meta property="og:image" content="http://kanqukuai.cn/2018/03/01/chuang-jian-jia-mi-mao/1_b0GUOvwNgGnnJxu9Pyzibg.png">
+<meta property="og:updated_time" content="2018-03-23T09:01:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何在以太网上创建你自己的加密猫游戏">
 <meta name="twitter:description" content="原文链接  李工翻译，转载请注明出处 加密猫游戏很好的证明了区块链除了简单金融交易以外的用途 我希望我们在未来能看到更多跟加密猫一样的区块链技术在游戏领域的创新应用。所以我希望能写一个关于加密猫代码的快速攻略，用来展示这个游戏是怎么被实现的。 这篇文章是写给开发者的，但这不是一个介绍Solidity的新手教程，我尝试包含了参考文档的链接使文章尽可能适用于所有层次的开发者。 让我们来一探究竟… 加密">
+<meta name="twitter:image" content="http://kanqukuai.cn/2018/03/01/chuang-jian-jia-mi-mao/1_b0GUOvwNgGnnJxu9Pyzibg.png">
 
 
 
@@ -392,7 +394,7 @@
 <p>KittyBase合约类型接着定义了一个猫咪合约类型的数据结构：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Kitty[] kitties;</span><br></pre></td></tr></table></figure>
 <p>这个数组保持了现存的所有猫咪的数据，所以它有点像是主要的猫咪数据库。无论何时，当一只新的猫咪创建后，它会被加入到这个数组中来，数组的索引将成为这只猫的ID，比如创世猫拥的ID为1：</p>
-
+<img src="/2018/03/01/chuang-jian-jia-mi-mao/1_b0GUOvwNgGnnJxu9Pyzibg.png">
 <p>这个合约同样包括了一组映射，从猫咪的ID到猫咪主人的地址，用来跟踪猫咪的主任信息：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 猫咪索引到所有者</span><br><span class="line">mapping (uint256 =&gt; address) public kittyIndexToOwner;</span><br></pre></td></tr></table></figure>
 <p>同样合约定义了一些其它的映射，但因为本文章长度有限，在这里就不赘述了。</p>
