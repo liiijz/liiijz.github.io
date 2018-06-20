@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="通过动手做来学习区块链技术（Python）学习区块链额工作原理的最快方法就是通过自己创建一个区块链 你在观看本文的原因正如你像我一样对加密货币的兴起感到振奋。你希望知道区块链的工作原理——支撑其运行的背后的基础技术。 但是理解区块链并不是一件简单的事情，至少对于我是这样。观看了大量的视频和教程，但非常少的例子参考让我学习起来非常艰难。 我喜欢一边学习一边实践。这强制我学习知识要点通过代码。I li">
+<meta property="og:type" content="article">
+<meta property="og:title" content="通过动手做来学习区块链技术（Python）">
+<meta property="og:url" content="http://kanqukuai.cn/2018/06/20/learn-blockchains-by-building-one/index.html">
+<meta property="og:site_name" content="看区块">
+<meta property="og:description" content="通过动手做来学习区块链技术（Python）学习区块链额工作原理的最快方法就是通过自己创建一个区块链 你在观看本文的原因正如你像我一样对加密货币的兴起感到振奋。你希望知道区块链的工作原理——支撑其运行的背后的基础技术。 但是理解区块链并不是一件简单的事情，至少对于我是这样。观看了大量的视频和教程，但非常少的例子参考让我学习起来非常艰难。 我喜欢一边学习一边实践。这强制我学习知识要点通过代码。I li">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://kanqukuai.cn/2018/06/20/learn-blockchains-by-building-one/1.png">
+<meta property="og:image" content="http://kanqukuai.cn/2018/06/20/learn-blockchains-by-building-one/2.png">
+<meta property="og:updated_time" content="2018-06-20T08:29:02.126Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="通过动手做来学习区块链技术（Python）">
+<meta name="twitter:description" content="通过动手做来学习区块链技术（Python）学习区块链额工作原理的最快方法就是通过自己创建一个区块链 你在观看本文的原因正如你像我一样对加密货币的兴起感到振奋。你希望知道区块链的工作原理——支撑其运行的背后的基础技术。 但是理解区块链并不是一件简单的事情，至少对于我是这样。观看了大量的视频和教程，但非常少的例子参考让我学习起来非常艰难。 我喜欢一边学习一边实践。这强制我学习知识要点通过代码。I li">
+<meta name="twitter:image" content="http://kanqukuai.cn/2018/06/20/learn-blockchains-by-building-one/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://kanqukuai.cn/2018/06/20/learn-blockchains-by-building-one/"/>
+
+
+
+
+
+  <title>通过动手做来学习区块链技术（Python） | 看区块</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">看区块</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">kanqukuai.cn</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-btc_exp">
+          <a href="https://blockchain.info/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-cube"></i> <br />
+            
+            比特币浏览器
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-eth_exp">
+          <a href="https://etherscan.io/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-cube"></i> <br />
+            
+            以太坊浏览器
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://kanqukuai.cn/2018/06/20/learn-blockchains-by-building-one/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="看区块">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://cdn-images.threadless.com/threadless-media/artist_shops/shops/ethereum/products/55958/shirt-1467438121-d068dc5be814342d0eb879394bc1f779.png?v=3&d=eyJvbmx5X21ldGEiOiBmYWxzZSwgImZvcmNlIjogZmFsc2UsICJvcHMiOiBbWyJ0cmltIiwgW2ZhbHNlLCBmYWxzZV0sIHt9XSwgWyJyZXNpemUiLCBbXSwgeyJ3aWR0aCI6IDk5Ni4wLCAiYWxsb3dfdXAiOiBmYWxzZSwgImhlaWdodCI6IDk5Ni4wfV0sIFsiY2FudmFzX2NlbnRlcmVkIiwgWzEyMDAsIDEyMDBdLCB7ImJhY2tncm91bmQiOiAiZmZmZmZmIn1dLCBbInJlc2l6ZSIsIFs4MDBdLCB7fV0sIFsiY2FudmFzX2NlbnRlcmVkIiwgWzgwMCwgODAwLCAiI2ZmZmZmZiJdLCB7fV0sIFsiZW5jb2RlIiwgWyJqcGciLCA4NV0sIHt9XV19">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="看区块">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">通过动手做来学习区块链技术（Python）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-20T09:48:27+08:00">
+                2018-06-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1><span id="通过动手做来学习区块链技术python">通过动手做来学习区块链技术（Python）</span></h1><p>学习区块链额工作原理的最快方法就是通过自己创建一个区块链</p>
+<p>你在观看本文的原因正如你像我一样对加密货币的兴起感到振奋。你希望知道区块链的工作原理——支撑其运行的背后的基础技术。</p>
+<p>但是理解区块链并不是一件简单的事情，至少对于我是这样。观看了大量的视频和教程，但非常少的例子参考让我学习起来非常艰难。</p>
+<p>我喜欢一边学习一边实践。这强制我学习知识要点通过代码。<br>I like learning by doing. It forces me to deal with the subject matter at a code level, which gets it sticking. If you do the same, at the end of this guide you’ll have a functioning Blockchain with a solid grasp of how they work.</p>
+<p>在你开始之前。。。</p>
+<p>请记住一个区块链是一个顺序的，不可变的链，上门存储的记录叫做区块。区块能包含交易，文件，和其它任意类型的数据。但最重要的是这些区块是通过hash值链接在一起的。</p>
+<p>如果你不是很清楚什么是hash，这里有一些解释。</p>
+<p>这篇教程的目标读者群体：你应该能轻松的读/写一些基础的python代码，同时能理解HTTP请求是怎样工作的，因为我们将会讨论我们基于HTTP的区块链.</p>
+<p>我需要安装什么？确保已经安装了Python 3.6+（连同pip）。同样需要安装Flask和request库：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install Flask==<span class="number">0.12</span><span class="number">.2</span> requests==<span class="number">2.18</span><span class="number">.4</span></span><br></pre></td></tr></table></figure>
+<p>哦，你还需要一个HTTP客户端，比如Postman或者cURL。</p>
+<p>最终代码在哪里？源代码在这里。</p>
+<h2><span id="第一步创建一个区块链">第一步：创建一个区块链</span></h2><p>打开你最喜欢的文本编辑器或者IDE，我自己喜欢PyCharm，创建一个新文件，叫做blockchain.py。我们将只会使用这一个源文件。</p>
+<h3><span id="表现一个区块链">表现一个区块链</span></h3><p>我们将创建一个区块链，其构造器将创建一个初始的空列表（用来存储我们的区块链数据），XXX,下面是我们类型的设计：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Blockchain</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.chain = []</span><br><span class="line">        self.current_transactions = []</span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">new_block</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="comment"># Creates a new Block and adds it to the chain</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">new_transaction</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="comment"># Adds a new transaction to the list of transactions</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    </span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">hash</span><span class="params">(block)</span>:</span></span><br><span class="line">        <span class="comment"># Hashes a Block</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">last_block</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="comment"># Returns the last Block in the chain</span></span><br><span class="line">        <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<p>我们的区块链类负责管理这条链。它将会存储交易且提供一些辅助方法用来增加新的区块到链上。让我们来填充一些函数方法。</p>
+<p>一个区块看上去是什么样子的？</p>
+<p>每一个区块都拥有一个索引，一个时间戳（Unix时间），一个交易列表，一个证明，以及前一个区块的hash值。</p>
+<p>这有一个例子，一个单独的区块看上去是什么样子：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">block = &#123;</span><br><span class="line">    <span class="string">'index'</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="string">'timestamp'</span>: <span class="number">1506057125.900785</span>,</span><br><span class="line">    <span class="string">'transactions'</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">'sender'</span>: <span class="string">"8527147fe1f5426f9dd545de4b27ee00"</span>,</span><br><span class="line">            <span class="string">'recipient'</span>: <span class="string">"a77f5cdfa2934df3954a5c7c7da5df1f"</span>,</span><br><span class="line">            <span class="string">'amount'</span>: <span class="number">5</span>,</span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br><span class="line">    <span class="string">'proof'</span>: <span class="number">324984774000</span>,</span><br><span class="line">    <span class="string">'previous_hash'</span>: <span class="string">"2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在，区块链的思路比较明显—— 每一个新的区块包含它本身，前一个区块的hash。<br>这是至关重要的因为，<strong>这个属性给予了区块链不可变不可篡改的特性：</strong>如果一个攻击者试图攻击了链里较早的一个区块那么后面所有的区块将会包含不正确的hash值。</p>
+<p>这是否是有意义的？这是区块链背后的核心理念。</p>
+<h3><span id="添加交易到区块中">添加交易到区块中</span></h3><p>我们需要一个方法添加交易到区块中。我们的new_transaction()方法负责做这个工作，它非常直接：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Blockchain</span><span class="params">(object)</span>:</span></span><br><span class="line">    ...</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">new_transaction</span><span class="params">(self, sender, recipient, amount)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Creates a new transaction to go into the next mined Block</span></span><br><span class="line"><span class="string">        :param sender: &lt;str&gt; Address of the Sender</span></span><br><span class="line"><span class="string">        :param recipient: &lt;str&gt; Address of the Recipient</span></span><br><span class="line"><span class="string">        :param amount: &lt;int&gt; Amount</span></span><br><span class="line"><span class="string">        :return: &lt;int&gt; The index of the Block that will hold this transaction</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line"></span><br><span class="line">        self.current_transactions.append(&#123;</span><br><span class="line">            <span class="string">'sender'</span>: sender,</span><br><span class="line">            <span class="string">'recipient'</span>: recipient,</span><br><span class="line">            <span class="string">'amount'</span>: amount,</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> self.last_block[<span class="string">'index'</span>] + <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>在new_transaction()添加了一个交易到交易列表之后，它将返回 下一个将被挖矿出的区块的索引（当前最后一个区块索引+1）。这对于提交交易的用户，在后面将会非常有用。</p>
+<h3><span id="创建新的区块">创建新的区块</span></h3><p>当我们的区块链被实例化以后，我们将需要播种一个创世区块——一个没有前任的区块。我们同样需要添加一个“proof”变量到我们的创世区块，这是挖矿（工作量证明）的结果。我们将会在后面讨论挖矿。</p>
+<p>除了在我们的构造器中创建创世区块以外，我们还要完成new_block(), new_transaction()和hash()几个方法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Blockchain</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.current_transactions = []</span><br><span class="line">        self.chain = []</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Create the genesis block</span></span><br><span class="line">        self.new_block(previous_hash=<span class="number">1</span>, proof=<span class="number">100</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">new_block</span><span class="params">(self, proof, previous_hash=None)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Create a new Block in the Blockchain</span></span><br><span class="line"><span class="string">        :param proof: &lt;int&gt; The proof given by the Proof of Work algorithm</span></span><br><span class="line"><span class="string">        :param previous_hash: (Optional) &lt;str&gt; Hash of previous Block</span></span><br><span class="line"><span class="string">        :return: &lt;dict&gt; New Block</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line"></span><br><span class="line">        block = &#123;</span><br><span class="line">            <span class="string">'index'</span>: len(self.chain) + <span class="number">1</span>,</span><br><span class="line">            <span class="string">'timestamp'</span>: time(),</span><br><span class="line">            <span class="string">'transactions'</span>: self.current_transactions,</span><br><span class="line">            <span class="string">'proof'</span>: proof,</span><br><span class="line">            <span class="string">'previous_hash'</span>: previous_hash <span class="keyword">or</span> self.hash(self.chain[<span class="number">-1</span>]),</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Reset the current list of transactions</span></span><br><span class="line">        self.current_transactions = []</span><br><span class="line"></span><br><span class="line">        self.chain.append(block)</span><br><span class="line">        <span class="keyword">return</span> block</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">new_transaction</span><span class="params">(self, sender, recipient, amount)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Creates a new transaction to go into the next mined Block</span></span><br><span class="line"><span class="string">        :param sender: &lt;str&gt; Address of the Sender</span></span><br><span class="line"><span class="string">        :param recipient: &lt;str&gt; Address of the Recipient</span></span><br><span class="line"><span class="string">        :param amount: &lt;int&gt; Amount</span></span><br><span class="line"><span class="string">        :return: &lt;int&gt; The index of the Block that will hold this transaction</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        self.current_transactions.append(&#123;</span><br><span class="line">            <span class="string">'sender'</span>: sender,</span><br><span class="line">            <span class="string">'recipient'</span>: recipient,</span><br><span class="line">            <span class="string">'amount'</span>: amount,</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> self.last_block[<span class="string">'index'</span>] + <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">last_block</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.chain[<span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">hash</span><span class="params">(block)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Creates a SHA-256 hash of a Block</span></span><br><span class="line"><span class="string">        :param block: &lt;dict&gt; Block</span></span><br><span class="line"><span class="string">        :return: &lt;str&gt;</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># We must make sure that the Dictionary is Ordered, or we'll have inconsistent hashes</span></span><br><span class="line">        block_string = json.dumps(block, sort_keys=<span class="keyword">True</span>).encode()</span><br><span class="line">        <span class="keyword">return</span> hashlib.sha256(block_string).hexdigest()</span><br></pre></td></tr></table></figure>
+<p>上面的代码应该是直截了当的——我已经加入了一些注释和文档文字来帮助你更加清晰的看懂代码。我们快要完成表示我们的区块链了。但现在，你必须能够理解新的区块是如何被创建的，铸造或者挖矿。</p>
+<h3><span id="理解工作量证明">理解工作量证明</span></h3><p>一个工作量证明算法（PoW）是关于新的区块在区块链上如何被创建跟被挖矿的。PoW的目标是找到一个随机数解决一个数学问题。这个随机数必须是比较困难被发现但是很容易被验证的对于网络上的任何人——从计算上来讲。这就是工作量证明背后的核心理念。</p>
+<p>我们来看一个非常简单的例子帮助深入理解。</p>
+<p>让我们来设计一个 一些整数X乘以Y的hash值必须以0来结尾。<br>所以 hash(x * y) = ac23dc…0。因此对于这个简单的例子，让我们给定x等于5。然后在python里实现：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> hashlib <span class="keyword">import</span> sha256</span><br><span class="line">x = <span class="number">5</span></span><br><span class="line">y = <span class="number">0</span>  <span class="comment"># We don't know what y should be yet...</span></span><br><span class="line"><span class="keyword">while</span> sha256(<span class="string">f'<span class="subst">&#123;x*y&#125;</span>'</span>.encode()).hexdigest()[<span class="number">-1</span>] != <span class="string">"0"</span>:</span><br><span class="line">    y += <span class="number">1</span></span><br><span class="line">print(<span class="string">f'The solution is y = <span class="subst">&#123;y&#125;</span>'</span>)</span><br></pre></td></tr></table></figure>
+<p>这里的答案是y = 21。因为此时生成的hash是以0结尾的：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hash(<span class="number">5</span> * <span class="number">21</span>) = <span class="number">1253e9373</span>e..<span class="number">.5e3600155</span>e860</span><br></pre></td></tr></table></figure></p>
+<p>在比特币里，工作量证明的算法叫做哈希现金（hashcash ）算法。这套算法跟我们上面的例子没有太大的差异，大同小异。这个算法是关于矿工们互相竞赛来创建新的区块。大体上，这个算法的难度是由特定字符在字符串中的数量决定的。当矿工找到答案后，一条带有比特币的交易会奖励给他们。</p>
+<p>在比特币网络中可以很容易的验证他们的答案。</p>
+<h3><span id="实现基本的工作量证明">实现基本的工作量证明</span></h3><p>我们来为我们的区块链实现一个相似的算法。我们的规则将会跟上面的例子相似：<br>找出一个数字p，与之前的区块的答案做hash函数，使得这个hash是以前置4个0开头的。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> uuid <span class="keyword">import</span> uuid4</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Blockchain</span><span class="params">(object)</span>:</span></span><br><span class="line">    ...</span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">proof_of_work</span><span class="params">(self, last_proof)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Simple Proof of Work Algorithm:</span></span><br><span class="line"><span class="string">         - Find a number p' such that hash(pp') contains leading 4 zeroes, where p is the previous p'</span></span><br><span class="line"><span class="string">         - p is the previous proof, and p' is the new proof</span></span><br><span class="line"><span class="string">        :param last_proof: &lt;int&gt;</span></span><br><span class="line"><span class="string">        :return: &lt;int&gt;</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line"></span><br><span class="line">        proof = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> self.valid_proof(last_proof, proof) <span class="keyword">is</span> <span class="keyword">False</span>:</span><br><span class="line">            proof += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> proof</span><br><span class="line"></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">valid_proof</span><span class="params">(last_proof, proof)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Validates the Proof: Does hash(last_proof, proof) contain 4 leading zeroes?</span></span><br><span class="line"><span class="string">        :param last_proof: &lt;int&gt; Previous Proof</span></span><br><span class="line"><span class="string">        :param proof: &lt;int&gt; Current Proof</span></span><br><span class="line"><span class="string">        :return: &lt;bool&gt; True if correct, False if not.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line"></span><br><span class="line">        guess = <span class="string">f'<span class="subst">&#123;last_proof&#125;</span><span class="subst">&#123;proof&#125;</span>'</span>.encode()</span><br><span class="line">        guess_hash = hashlib.sha256(guess).hexdigest()</span><br><span class="line">        <span class="keyword">return</span> guess_hash[:<span class="number">4</span>] == <span class="string">"0000"</span></span><br></pre></td></tr></table></figure>
+<p>为了调整这个算法的难度，我们可以修改前置0的个数。但4个0是足够的。你会发现添加一个前导0会对解决方案的时间造成巨大的影响。</p>
+<p>我们的类接近完成，现在我们准备开始跟HTTP请求打交道了。</p>
+<h2><span id="第二步把我们的区块链变成api">第二步：把我们的区块链变成API</span></h2><p>我们将使用Python Flask框架。这是一个Web开发微型框架并且它能够很容易的映射endpoints到python的函数。这使得我们能够把我们的区块链架架设在web上并使用HTTP请求。</p>
+<p>我们将创建3个方法：</p>
+<ul>
+<li>/transactions/new 为区块创建一个新的交易记录</li>
+<li>/mine 告诉服务器挖矿一个新的区块</li>
+<li>/chain 返回整个区块链</li>
+</ul>
+<p>设置Flask<br>我们的服务器将在我们的区块链网络中将形成一个单一的节点。现在我们来创建一些样板代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">from</span> textwrap <span class="keyword">import</span> dedent</span><br><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> uuid <span class="keyword">import</span> uuid4</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Blockchain</span><span class="params">(object)</span>:</span></span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Instantiate our Node</span></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Generate a globally unique address for this node</span></span><br><span class="line">node_identifier = str(uuid4()).replace(<span class="string">'-'</span>, <span class="string">''</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Instantiate the Blockchain</span></span><br><span class="line">blockchain = Blockchain()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/mine', methods=['GET'])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">mine</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">"We'll mine a new Block"</span></span><br><span class="line">  </span><br><span class="line"><span class="meta">@app.route('/transactions/new', methods=['POST'])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">new_transaction</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">"We'll add a new transaction"</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/chain', methods=['GET'])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">full_chain</span><span class="params">()</span>:</span></span><br><span class="line">    response = &#123;</span><br><span class="line">        <span class="string">'chain'</span>: blockchain.chain,</span><br><span class="line">        <span class="string">'length'</span>: len(blockchain.chain),</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> jsonify(response), <span class="number">200</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    app.run(host=<span class="string">'0.0.0.0'</span>, port=<span class="number">5000</span>)</span><br></pre></td></tr></table></figure>
+<p>上面代码的简要解释如下：</p>
+<ul>
+<li>第15行：实例化我们的节点。了解更多Flask相关知识点击<a href="http://flask.pocoo.org/docs/0.12/quickstart/#a-minimal-application" target="_blank" rel="noopener">这里</a></li>
+<li>第18行：为我们的节点创建一个随机的名字。</li>
+<li>第21行：实例化我们的区块链类。</li>
+<li>第24到26行：创建/mine 路径点，这是一个GET请求。</li>
+<li>第28到30行：创建/transactions/new 路径点，这是一个POST请求，因为我们将发送数据到这里。</li>
+<li>第32到38行：创建/chain路径点，这里将返回整个区块链。</li>
+<li>第40到41行：将服务器运行在5000端口上。</li>
+</ul>
+<h3><span id="transactions-交易路径">Transactions 交易路径</span></h3><p>这是一条交易请求的内容。是由用户发送到服务器的：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"> <span class="string">"sender"</span>: <span class="string">"my address"</span>,</span><br><span class="line"> <span class="string">"recipient"</span>: <span class="string">"someone else's address"</span>,</span><br><span class="line"> <span class="string">"amount"</span>: <span class="number">5</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>因为我们已经添加交易函数到我们的区块上，剩下的步骤就简单了。让我们来写添加交易的函数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">from</span> textwrap <span class="keyword">import</span> dedent</span><br><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> uuid <span class="keyword">import</span> uuid4</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, jsonify, request</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/transactions/new', methods=['POST'])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">new_transaction</span><span class="params">()</span>:</span></span><br><span class="line">    values = request.get_json()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Check that the required fields are in the POST'ed data</span></span><br><span class="line">    required = [<span class="string">'sender'</span>, <span class="string">'recipient'</span>, <span class="string">'amount'</span>]</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> all(k <span class="keyword">in</span> values <span class="keyword">for</span> k <span class="keyword">in</span> required):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'Missing values'</span>, <span class="number">400</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Create a new Transaction</span></span><br><span class="line">    index = blockchain.new_transaction(values[<span class="string">'sender'</span>], values[<span class="string">'recipient'</span>], values[<span class="string">'amount'</span>])</span><br><span class="line"></span><br><span class="line">    response = &#123;<span class="string">'message'</span>: <span class="string">f'Transaction will be added to Block <span class="subst">&#123;index&#125;</span>'</span>&#125;</span><br><span class="line">    <span class="keyword">return</span> jsonify(response), <span class="number">201</span></span><br></pre></td></tr></table></figure>
+<h3><span id="挖矿路径">挖矿路径</span></h3><p>我们的挖矿路径是所有魔法开始的地方，它很简单。它需要做3件事情：</p>
+<ol>
+<li>计算工作量证明</li>
+<li>奖励矿工1个金币通过增加一条交易记录</li>
+<li>铸造新的区块并增加到区块链中</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> uuid <span class="keyword">import</span> uuid4</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, jsonify, request</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/mine', methods=['GET'])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">mine</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="comment"># We run the proof of work algorithm to get the next proof...</span></span><br><span class="line">    last_block = blockchain.last_block</span><br><span class="line">    last_proof = last_block[<span class="string">'proof'</span>]</span><br><span class="line">    proof = blockchain.proof_of_work(last_proof)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># We must receive a reward for finding the proof.</span></span><br><span class="line">    <span class="comment"># The sender is "0" to signify that this node has mined a new coin.</span></span><br><span class="line">    blockchain.new_transaction(</span><br><span class="line">        sender=<span class="string">"0"</span>,</span><br><span class="line">        recipient=node_identifier,</span><br><span class="line">        amount=<span class="number">1</span>,</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Forge the new Block by adding it to the chain</span></span><br><span class="line">    previous_hash = blockchain.hash(last_block)</span><br><span class="line">    block = blockchain.new_block(proof, previous_hash)</span><br><span class="line"></span><br><span class="line">    response = &#123;</span><br><span class="line">        <span class="string">'message'</span>: <span class="string">"New Block Forged"</span>,</span><br><span class="line">        <span class="string">'index'</span>: block[<span class="string">'index'</span>],</span><br><span class="line">        <span class="string">'transactions'</span>: block[<span class="string">'transactions'</span>],</span><br><span class="line">        <span class="string">'proof'</span>: block[<span class="string">'proof'</span>],</span><br><span class="line">        <span class="string">'previous_hash'</span>: block[<span class="string">'previous_hash'</span>],</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> jsonify(response), <span class="number">200</span></span><br></pre></td></tr></table></figure>
+<p>注意这里已挖矿出的区块的接受者是我们节点的地址。我们完成的大部分工作是与我们的Blockchain类的方法进行交互。就这一点来说，我们已经完成了，现在可以开始与我们的区块链进行交互了。</p>
+<h2><span id="第三步与我们的区块链进行交互">第三步：与我们的区块链进行交互</span></h2><p>你可以使用普通的cURL或者Postman来与我们的API进行交互。</p>
+<p>启动服务器：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ python blockchain.py</span><br><span class="line">* Running on http://<span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">5000</span>/ (Press CTRL+C to quit)</span><br></pre></td></tr></table></figure></p>
+<p>让我们尝试开始挖掘一个新的区块通过发起一个GET请求到<br><a href="http://localhost:5000/mine" target="_blank" rel="noopener">http://localhost:5000/mine</a></p>
+<img src="/2018/06/20/learn-blockchains-by-building-one/1.png">
+<p>让我们创建一个新的交易通过发起一个POST请求到<br><a href="http://localhost:5000/transactions/new" target="_blank" rel="noopener">http://localhost:5000/transactions/new</a><br>并在请求体里附上交易数据结构</p>
+<img src="/2018/06/20/learn-blockchains-by-building-one/2.png">
+<p>如果你没有使用Postman, 你可以使用cURL发起相似的请求：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ curl -X POST -H <span class="string">"Content-Type: application/json"</span> -d <span class="string">'&#123;</span></span><br><span class="line"><span class="string"> "sender": "d4ee26eee15148ee92c6cd394edd974e",</span></span><br><span class="line"><span class="string"> "recipient": "someone-other-address",</span></span><br><span class="line"><span class="string"> "amount": 5</span></span><br><span class="line"><span class="string">&#125;'</span> <span class="string">"http://localhost:5000/transactions/new"</span></span><br></pre></td></tr></table></figure></p>
+<p>我重启了我的服务器，已经挖出了两个区块，总共有3个区块。我们来检查一下整个区块链通过请求<br> <a href="http://localhost:5000/chain：" target="_blank" rel="noopener">http://localhost:5000/chain：</a><br> <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"> &#123;</span><br><span class="line">  <span class="attr">"chain"</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">"index"</span>: <span class="number">1</span>,</span><br><span class="line">      <span class="attr">"previous_hash"</span>: <span class="number">1</span>,</span><br><span class="line">      <span class="attr">"proof"</span>: <span class="number">100</span>,</span><br><span class="line">      <span class="attr">"timestamp"</span>: <span class="number">1506280650.770839</span>,</span><br><span class="line">      <span class="attr">"transactions"</span>: []</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">"index"</span>: <span class="number">2</span>,</span><br><span class="line">      <span class="attr">"previous_hash"</span>: <span class="string">"c099bc...bfb7"</span>,</span><br><span class="line">      <span class="attr">"proof"</span>: <span class="number">35293</span>,</span><br><span class="line">      <span class="attr">"timestamp"</span>: <span class="number">1506280664.717925</span>,</span><br><span class="line">      <span class="attr">"transactions"</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">"amount"</span>: <span class="number">1</span>,</span><br><span class="line">          <span class="attr">"recipient"</span>: <span class="string">"8bbcb347e0634905b0cac7955bae152b"</span>,</span><br><span class="line">          <span class="attr">"sender"</span>: <span class="string">"0"</span></span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">"index"</span>: <span class="number">3</span>,</span><br><span class="line">      <span class="attr">"previous_hash"</span>: <span class="string">"eff91a...10f2"</span>,</span><br><span class="line">      <span class="attr">"proof"</span>: <span class="number">35089</span>,</span><br><span class="line">      <span class="attr">"timestamp"</span>: <span class="number">1506280666.1086972</span>,</span><br><span class="line">      <span class="attr">"transactions"</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">"amount"</span>: <span class="number">1</span>,</span><br><span class="line">          <span class="attr">"recipient"</span>: <span class="string">"8bbcb347e0634905b0cac7955bae152b"</span>,</span><br><span class="line">          <span class="attr">"sender"</span>: <span class="string">"0"</span></span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">"length"</span>: <span class="number">3</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2><span id="第四步共识">第四步：共识</span></h2><p>这是非常酷的。我们已经有了一个基本的区块链能够接受交易和允许大家在上面挖矿。但是整个区块链的重点在于这个系统应该是分散的去中心化的。如果它们是去中心化的，那么怎么确保他们都在维护同一条链条。这叫做共识问题，那么我们将不得不实现一个共识算法如果我们希望更多的不止一个节点在我们的网络上。</p>
+<h3><span id="注册新的节点">注册新的节点</span></h3><p>在我们能够实现一个共识算法之前，我们需要一种方法让一个节点能够知道网络上的其它相邻节点。我们网络中的每一个节点都应该保存一个网络中其它节点的注册表。因此，我们需要更多的路径点：</p>
+<ol>
+<li>/nodes/register 接受一个新节点的列表以URL的格式</li>
+<li>/nodes/resolve 实现我们的共识算法，能解决冲突——保证节点工作在正确的链上</li>
+</ol>
+<p>我们来修改区块链的构造函数提供一个方法来注册节点：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="keyword">from</span> urllib.parse <span class="keyword">import</span> urlparse</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Blockchain</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        ...</span><br><span class="line">        self.nodes = set()</span><br><span class="line">        ...</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">register_node</span><span class="params">(self, address)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Add a new node to the list of nodes</span></span><br><span class="line"><span class="string">        :param address: &lt;str&gt; Address of node. Eg. 'http://192.168.0.5:5000'</span></span><br><span class="line"><span class="string">        :return: None</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line"></span><br><span class="line">        parsed_url = urlparse(address)</span><br><span class="line">        self.nodes.add(parsed_url.netloc)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/13/erc721-shen-du-fen-xi/" rel="next" title="深入分析ERC721">
+                <i class="fa fa-chevron-left"></i> 深入分析ERC721
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://cdn-images.threadless.com/threadless-media/artist_shops/shops/ethereum/products/55958/shirt-1467438121-d068dc5be814342d0eb879394bc1f779.png?v=3&d=eyJvbmx5X21ldGEiOiBmYWxzZSwgImZvcmNlIjogZmFsc2UsICJvcHMiOiBbWyJ0cmltIiwgW2ZhbHNlLCBmYWxzZV0sIHt9XSwgWyJyZXNpemUiLCBbXSwgeyJ3aWR0aCI6IDk5Ni4wLCAiYWxsb3dfdXAiOiBmYWxzZSwgImhlaWdodCI6IDk5Ni4wfV0sIFsiY2FudmFzX2NlbnRlcmVkIiwgWzEyMDAsIDEyMDBdLCB7ImJhY2tncm91bmQiOiAiZmZmZmZmIn1dLCBbInJlc2l6ZSIsIFs4MDBdLCB7fV0sIFsiY2FudmFzX2NlbnRlcmVkIiwgWzgwMCwgODAwLCAiI2ZmZmZmZiJdLCB7fV0sIFsiZW5jb2RlIiwgWyJqcGciLCA4NV0sIHt9XV19"
+               alt="看区块" />
+          <p class="site-author-name" itemprop="name">看区块</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="liiijz@163.com" target="_blank" title="email">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      email
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="" target="_blank" title="twitter">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      twitter
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="" target="_blank" title="github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      github
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="" target="_blank" title="googleplus">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      googleplus
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="/atom.xml" target="_blank" title="rss">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      rss
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">通过动手做来学习区块链技术（Python）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.</span> <span class="nav-text">第一步：创建一个区块链</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.1.</span> <span class="nav-text">表现一个区块链</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.2.</span> <span class="nav-text">添加交易到区块中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.3.</span> <span class="nav-text">创建新的区块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.4.</span> <span class="nav-text">理解工作量证明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.5.</span> <span class="nav-text">实现基本的工作量证明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.</span> <span class="nav-text">第二步：把我们的区块链变成API</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.1.</span> <span class="nav-text">Transactions 交易路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.2.</span> <span class="nav-text">挖矿路径</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.3.</span> <span class="nav-text">第三步：与我们的区块链进行交互</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.4.</span> <span class="nav-text">第四步：共识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.4.1.</span> <span class="nav-text">注册新的节点</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">看区块</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
